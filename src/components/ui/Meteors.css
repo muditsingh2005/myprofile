@@ -1,0 +1,28 @@
+.meteor-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.meteor {
+  position: absolute;
+  top: -50px;
+  width: 1.5px;
+  height: 30px;
+  background: linear-gradient(to bottom, white, transparent);
+  animation: fall linear;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
