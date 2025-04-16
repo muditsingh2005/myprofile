@@ -9,7 +9,7 @@
 .meteor {
   position: absolute;
   top: -50px;
-  width: 1.5px;
+  width: 2px;
   height: 30px;
   background: linear-gradient(to bottom, white, transparent);
   animation: fall linear;

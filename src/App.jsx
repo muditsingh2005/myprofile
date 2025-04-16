@@ -7,10 +7,12 @@ import proj1Img from "../src/assets/project-1.jpg";
 import Footer from "./components/footer/footer";
 import Tools from "./components/tools/tools";
 import { Meteors } from "./components/ui/Meteors";
+import ScrollIndicator from "./components/ui/scrollIndicator";
 
 function App() {
   return (
     <>
+      <ScrollIndicator />
       <Navbar />
       <Hero />
 
