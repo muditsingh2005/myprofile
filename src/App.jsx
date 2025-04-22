@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Experties from "./components/Experties/Experties";
@@ -10,13 +10,19 @@ import { Meteors } from "./components/ui/Meteors";
 import ScrollIndicator from "./components/ui/scrollIndicator";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <ScrollIndicator />
       <Navbar />
-      <Hero />
+      <div id="hero">
+        <Hero />
+      </div>
 
-      <div className="my-experties">
+      <div id="experties" className="my-experties">
         <h1 className="exp-heading">My Experties</h1>
 
         <div className="exp-container">
@@ -44,7 +50,7 @@ function App() {
         <Tools />
       </div>
 
-      <div className="work-section  meteor-wrapper">
+      <div id="work" className="work-section meteor-wrapper">
         <h1 className="mywork-heading">My Work</h1>
 
         <div className="my-work-project-section">
@@ -78,7 +84,7 @@ function App() {
         </div>
       </div>
 
-      <div className="fotter-div">
+      <div id="footer" className="fotter-div">
         <Footer />
       </div>
 
