@@ -19,19 +19,19 @@ function Footer() {
 
           <ul>
             <li>
-              <a href="https://www.google.com">
+              <a href="https://www.instagram.com/_muditsingh2406_/">
                 <i className="fab fa-instagram"></i> Instagram
               </a>
             </li>
 
             <li>
-              <a href="https://www.google.com">
+              <a href="https://www.linkedin.com/in/muditsingh24/">
                 <i className="fab fa-linkedin"></i> LinkedIn
               </a>
             </li>
 
             <li>
-              <a href="https://www.google.com">
+              <a href="https://www.github.com/muditsingh2005">
                 <i className="fab fa-github"></i>Github
               </a>
             </li>

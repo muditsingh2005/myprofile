@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Experties from "./components/Experties/Experties";
 import Myproject from "./components/myprojects/myproject";
-import proj1Img from "../src/assets/project-1.jpg";
+import proj1Img from "../src/assets/project-1.png";
 import Footer from "./components/footer/footer";
 import Tools from "./components/tools/tools";
 import { Meteors } from "./components/ui/Meteors";
@@ -74,34 +74,7 @@ function App() {
               title="Triview"
               image={proj1Img}
               description="A travel review site"
-              projectlink="https://www.google.com"
-            />
-          </FadeInAnimation>
-
-          <FadeInAnimation delay={0.4}>
-            <Myproject
-              title="Triview"
-              image={proj1Img}
-              description="A travel review site"
-              projectlink="https://www.google.com"
-            />
-          </FadeInAnimation>
-
-          <FadeInAnimation delay={0.6}>
-            <Myproject
-              title="Triview"
-              image={proj1Img}
-              description="A travel review site"
-              projectlink="https://www.google.com"
-            />
-          </FadeInAnimation>
-
-          <FadeInAnimation delay={0.8}>
-            <Myproject
-              title="Triview"
-              image={proj1Img}
-              description="A travel review site"
-              projectlink="https://www.google.com"
+              projectlink="https://github.com/muditsingh2005/triview"
             />
           </FadeInAnimation>
         </div>
