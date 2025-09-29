@@ -7,7 +7,8 @@ import icon3 from "../../assets/icon-3.png";
 import icon4 from "../../assets/icon-4.png";
 import icon5 from "../../assets/icon-5.png";
 import icon6 from "../../assets/icon-6.webp";
-
+import icon7 from "../../assets/icon-7.png";
+import icon8 from "../../assets/icon-8.png";
 function Tools() {
   return (
     <div className="icon-section">
@@ -17,8 +18,12 @@ function Tools() {
         <img src={icon2} alt="icon-react" className="icon" />
         <img src={icon3} alt="icon-react" className="icon" />
         <img src={icon4} alt="icon-react" className="icon" />
+      </div>
+      <div className="floating-icon">
         <img src={icon5} alt="icon-react" className="icon" />
         <img src={icon6} alt="icon-react" className="icon" />
+        <img src={icon7} alt="icon-react" className="icon" />
+        <img src={icon8} alt="icon-react" className="icon" />
       </div>
     </div>
   );

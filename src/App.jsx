@@ -4,11 +4,13 @@ import Hero from "./components/Hero/Hero";
 import Experties from "./components/Experties/Experties";
 import Myproject from "./components/myprojects/myproject";
 import proj1Img from "../src/assets/project-1.png";
+import proj2Img from "../src/assets/project-2.png";
 import Footer from "./components/footer/footer";
 import Tools from "./components/tools/tools";
 import { Meteors } from "./components/ui/Meteors";
 import ScrollIndicator from "./components/ui/scrollIndicator";
 import FadeInAnimation from "./components/ui/FadeInAnimation";
+import MailMe from "./components/mail-me/MailMe";
 
 function App() {
   useEffect(() => {
@@ -71,6 +73,14 @@ function App() {
         <div className="my-work-project-section">
           <FadeInAnimation delay={0.2}>
             <Myproject
+              title="Inkspire"
+              image={proj2Img}
+              description="A blogging page..."
+              projectlink="https://github.com/muditsingh2005/blog-page"
+            />
+          </FadeInAnimation>
+          <FadeInAnimation delay={0.2}>
+            <Myproject
               title="Triview"
               image={proj1Img}
               description="A travel review site"
@@ -83,6 +93,7 @@ function App() {
       <div id="footer" className="fotter-div">
         <FadeInAnimation>
           <Footer />
+          <MailMe />
         </FadeInAnimation>
       </div>
 

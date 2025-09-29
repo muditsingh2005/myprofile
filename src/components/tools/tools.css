@@ -7,8 +7,8 @@
 }
 .icon-section {
   width: max-content;
-  margin: 40px auto;
-  height: 300px;
+  margin: 10% auto;
+  min-height: 400px; /* Changed from fixed height to min-height and increased */
   h1 {
     font-size: 40px;
     padding-left: 33%;
@@ -17,8 +17,13 @@
 
 .floating-icon {
   animation: float 5s ease-in-out infinite;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
+
+/* Remove the nested selector since we fixed the JSX structure */
 
 @keyframes float {
   0% {
