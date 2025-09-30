@@ -13,18 +13,18 @@ import icon8 from "../../assets/icon-8.png";
 function Tools() {
   const tools = [
     { icon: icon1, name: "React" },
-    { icon: icon2, name: "Node.js" },
-    { icon: icon3, name: "JavaScript" },
-    { icon: icon4, name: "HTML/CSS" },
-    { icon: icon5, name: "MongoDB" },
-    { icon: icon6, name: "Git" },
-    { icon: icon7, name: "Redux" },
-    { icon: icon8, name: "TypeScript" }
+    { icon: icon2, name: "CSS" },
+    { icon: icon3, name: "C++" },
+    { icon: icon4, name: "Node" },
+    { icon: icon5, name: "Express" },
+    { icon: icon6, name: "MongoDB" },
+    { icon: icon7, name: "Postman" },
+    { icon: icon8, name: "Docker" },
   ];
 
   return (
     <div className="tools-section" id="tools">
-      <motion.div 
+      <motion.div
         className="tools-header"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -34,23 +34,27 @@ function Tools() {
         <h2>Technologies I Work With</h2>
         <p>Modern tools for modern solutions</p>
       </motion.div>
-      
+
       <div className="tools-grid">
         {tools.map((tool, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="tool-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ 
+            whileHover={{
               y: -10,
-              boxShadow: "0 10px 25px rgba(8, 182, 188, 0.2)"
+              boxShadow: "0 10px 25px rgba(8, 182, 188, 0.2)",
             }}
           >
             <div className="tool-icon-container">
-              <img src={tool.icon} alt={`icon-${tool.name}`} className="tool-icon" />
+              <img
+                src={tool.icon}
+                alt={`icon-${tool.name}`}
+                className="tool-icon"
+              />
             </div>
             <p className="tool-name">{tool.name}</p>
           </motion.div>
