@@ -3,9 +3,30 @@ import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({
+  path: "./.env",
+});
 const app = express();
-app.use(cors());
+
+const allowedOrigins = [
+  process.env.FRONTEND_URL_PROD,
+  process.env.FRONTEND_URL_DEV,
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow requests like Postman
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // if using cookies/auth headers
+  })
+);
+
 app.use(express.json());
 
 // Route for contact form
@@ -16,8 +37,8 @@ app.post("/send", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.MY_EMAIL,   // your gmail
-        pass: process.env.MY_PASS,    // your app password
+        user: process.env.MY_EMAIL,
+        pass: process.env.MY_PASS,
       },
     });
 
