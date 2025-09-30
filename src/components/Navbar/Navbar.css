@@ -1,45 +1,90 @@
 .nav-logo {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
 }
 
 .container {
   display: flex;
   justify-content: space-between;
-  /* background-color: aqua */
-  background: rgba(0, 0, 0, 0.673);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
 
-  ul li:hover {
-    color: rgb(8, 182, 188);
-    cursor: pointer;
-    font-size: 20px;
-  }
+.container.scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 nav {
-  /* position: fixed; */
-  /* transform: translateZ(0); */
-
-  height: 80px;
+  height: 70px;
   width: 100%;
-  /* background-color: rgb(25, 25, 26); */
   color: white;
-  padding: 14px 0;
+  padding: 0 2rem;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  z-index: 10;
+  justify-content: space-between;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
 
-  ul li {
-    display: inline-block;
-    list-style: none;
-    margin: 5px 20px;
-    font-size: 18px;
+nav ul {
+  display: flex;
+  align-items: center;
+}
 
-    transition: font-size 0.3s ease, color 0.3s ease;
-  }
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 20px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+}
+
+nav ul li:hover {
+  color: rgb(8, 182, 188);
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+nav ul li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: rgb(8, 182, 188);
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+}
+
+nav ul li:hover::after {
+  width: 100%;
+}
+
+.btn {
+  background: rgb(8, 182, 188);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(8, 182, 188, 0.2);
+  transition: all 0.3s ease;
 }

@@ -1,44 +1,95 @@
-.icon {
-  width: 100px;
-  height: 100px;
-  margin: 70px 0px;
-  margin-right: 50px;
-  /* gap: 90px; */
-}
-.icon-section {
-  width: max-content;
-  margin: 10% auto;
-  min-height: 400px; /* Changed from fixed height to min-height and increased */
-  h1 {
-    font-size: 40px;
-    padding-left: 33%;
-  }
+.tools-section {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
-.floating-icon {
-  animation: float 5s ease-in-out infinite;
+.tools-header {
+  margin-bottom: 60px;
+}
+
+.tools-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #ffffff, #b8b8b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tools-header p {
+  font-size: 1.2rem;
+  color: rgb(8, 182, 188);
+  font-weight: 500;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.tool-card {
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px 20px;
+  width: 100%;
+  max-width: 200px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.tool-icon-container {
+  background: rgba(8, 182, 188, 0.1);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 0 auto 15px;
+  padding: 15px;
+  transition: all 0.3s ease;
 }
 
-/* Remove the nested selector since we fixed the JSX structure */
+.tool-card:hover .tool-icon-container {
+  transform: scale(1.1);
+  background: rgba(8, 182, 188, 0.2);
+}
+
+.tool-icon {
+  width: 100%;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.tool-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin: 10px 0 0;
+  transition: color 0.3s ease;
+}
+
+.tool-card:hover .tool-name {
+  color: rgb(8, 182, 188);
+}
 
 @keyframes float {
   0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(3px, -5px);
+    transform: translateY(0);
   }
   50% {
-    transform: translate(0, 1px);
-  }
-  75% {
-    transform: translate(-3px, -3px);
+    transform: translateY(-10px);
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateY(0);
   }
 }

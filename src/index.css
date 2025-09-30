@@ -71,13 +71,13 @@ a {
 
 .my-work-project-section {
   display: grid;
-  column-gap: 30px;
-  row-gap: 30px;
-  grid-template-columns: repeat(3, 300px);
-  /* justify-content: space-evenly; */
-  height: 600px;
-  width: max-content;
-  margin: 20px auto;
+  column-gap: 50px;
+  row-gap: 40px;
+  grid-template-columns: repeat(auto-fit, 350px);
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
 }
 
 .work-section {
