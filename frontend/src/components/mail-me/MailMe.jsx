@@ -1,11 +1,10 @@
-
-import React, { useState } from 'react';
-import './MailMe.css';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import "./MailMe.css";
+import { motion } from "framer-motion";
 
 const MailMe = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [focused, setFocused] = useState(null);
 
@@ -24,26 +23,29 @@ const MailMe = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setStatus('');
+    setStatus("");
 
     try {
-      const response = await fetch('http://localhost:5000/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
+      const response = await fetch(
+        "https://myprofile-three-tawny.vercel.app/send",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }
+      );
 
       const data = await response.json();
-      
+
       if (data.success) {
-        setStatus('✅ Message sent successfully!');
-        setForm({ name: '', email: '', message: '' });
+        setStatus("✅ Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
       } else {
-        setStatus('❌ Failed to send message. Please try again.');
+        setStatus("❌ Failed to send message. Please try again.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setStatus('❌ Network error. Please check if the server is running.');
+      console.error("Error:", error);
+      setStatus("❌ Network error. Please check if the server is running.");
     } finally {
       setIsLoading(false);
     }
@@ -51,22 +53,22 @@ const MailMe = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
+    visible: { y: 0, opacity: 1 },
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="mail-me-container"
       id="contact"
       initial="hidden"
@@ -80,68 +82,68 @@ const MailMe = () => {
         <p>Have a question or want to work together? Send me a message!</p>
       </motion.div>
 
-      <motion.form 
-        onSubmit={sendEmail} 
+      <motion.form
+        onSubmit={sendEmail}
         className="contact-form"
         variants={itemVariants}
       >
-        <motion.div 
-          className={`form-group ${focused === 'name' ? 'focused' : ''}`}
+        <motion.div
+          className={`form-group ${focused === "name" ? "focused" : ""}`}
           variants={itemVariants}
         >
           <label htmlFor="name">Name</label>
-          <input 
-            type="text" 
-            id="name" 
-            name="name" 
+          <input
+            type="text"
+            id="name"
+            name="name"
             value={form.name}
             onChange={handleChange}
-            onFocus={() => handleFocus('name')}
+            onFocus={() => handleFocus("name")}
             onBlur={handleBlur}
-            required 
+            required
           />
           <div className="input-highlight"></div>
         </motion.div>
 
-        <motion.div 
-          className={`form-group ${focused === 'email' ? 'focused' : ''}`}
+        <motion.div
+          className={`form-group ${focused === "email" ? "focused" : ""}`}
           variants={itemVariants}
         >
           <label htmlFor="email">Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
+          <input
+            type="email"
+            id="email"
+            name="email"
             value={form.email}
             onChange={handleChange}
-            onFocus={() => handleFocus('email')}
+            onFocus={() => handleFocus("email")}
             onBlur={handleBlur}
-            required 
+            required
           />
           <div className="input-highlight"></div>
         </motion.div>
 
-        <motion.div 
-          className={`form-group ${focused === 'message' ? 'focused' : ''}`}
+        <motion.div
+          className={`form-group ${focused === "message" ? "focused" : ""}`}
           variants={itemVariants}
         >
           <label htmlFor="message">Message</label>
-          <textarea 
-            id="message" 
-            name="message" 
+          <textarea
+            id="message"
+            name="message"
             value={form.message}
             onChange={handleChange}
-            onFocus={() => handleFocus('message')}
+            onFocus={() => handleFocus("message")}
             onBlur={handleBlur}
-            required 
+            required
             rows="5"
           />
           <div className="input-highlight"></div>
         </motion.div>
 
-        <motion.button 
-          type="submit" 
-          className="submit-btn" 
+        <motion.button
+          type="submit"
+          className="submit-btn"
           disabled={isLoading}
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
@@ -150,12 +152,14 @@ const MailMe = () => {
           {isLoading ? (
             <span className="loading-spinner"></span>
           ) : (
-            <>Send Message<span className="btn-arrow">→</span></>
+            <>
+              Send Message<span className="btn-arrow">→</span>
+            </>
           )}
         </motion.button>
 
         {status && (
-          <motion.p 
+          <motion.p
             className="status-message"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
