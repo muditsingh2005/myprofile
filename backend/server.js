@@ -24,6 +24,8 @@ app.use(
       }
     },
     credentials: true, // if using cookies/auth headers
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
