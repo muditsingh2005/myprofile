@@ -61,4 +61,9 @@ app.post("/send", async (req, res) => {
   }
 });
 
+app.options("*", cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 app.listen(5000, () => console.log("✅ Server running on port 5000"));
