@@ -11,6 +11,10 @@ const app = express();
 const allowedOrigins = [
   process.env.FRONTEND_URL_PROD,
   process.env.FRONTEND_URL_DEV,
+  "https://myprofile-na37.vercel.app", // Your frontend URL
+  "https://myprofile-three-tawny.vercel.app",
+  "http://localhost:3000", // Local development
+  "http://localhost:5173",
 ];
 
 app.use(
@@ -20,14 +24,22 @@ app.use(
       if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.log("Blocked origin:", origin);
         callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true, // if using cookies/auth headers
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
+
+app.options("*", cors({
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+}));
 
 app.use(express.json());
 
@@ -61,9 +73,14 @@ app.post("/send", async (req, res) => {
   }
 });
 
-// app.options("*", cors({
-//   origin: allowedOrigins,
-//   credentials: true
-// }));
 
-app.listen(5000, () => console.log("✅ Server running on port 5000"));
+
+// app.listen(5000, () => console.log("✅ Server running on port 5000"));
+
+
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+}
+
+export default app;
