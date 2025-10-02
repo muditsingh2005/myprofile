@@ -34,20 +34,20 @@ app.use(
   })
 );
 
-app.options("*", cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log("Blocked origin:", origin);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-}));
+// app.options("*", cors({
+//   origin: function (origin, callback) {
+//     if (!origin) return callback(null, true);
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       console.log("Blocked origin:", origin);
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+// }));
 
 // app.options("*", cors({
 //   origin: allowedOrigins,
@@ -72,7 +72,8 @@ app.post("/send", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: email,
+      from: process.env.MY_EMAIL,
+      replyTo: email,
       to: process.env.MY_EMAIL,
       subject: `Portfolio Contact from ${name}`,
       text: message,
