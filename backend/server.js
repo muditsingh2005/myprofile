@@ -2,42 +2,55 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
-
 dotenv.config({
   path: "./.env",
 });
 const app = express();
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL_PROD,
-  process.env.FRONTEND_URL_DEV,
-  "https://myprofile-na37.vercel.app", // Your frontend URL
+  // Add your exact deployed frontend URL
+  "https://myprofile-na37.vercel.app",
+  // Keep production URL for safety
+  process.env.FRONTEND_URL_PROD || "https://myprofile-na37.vercel.app",
+  // Development URLs
+  process.env.FRONTEND_URL_DEV || "http://localhost:5173",
+  // Backup URLs
   "https://myprofile-three-tawny.vercel.app",
-  "http://localhost:3000", // Local development
+  "http://localhost:3000",
   "http://localhost:5173",
+  // Vercel preview deployments (if using)
+  /^https:\/\/.*\.vercel\.app$/,
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // allow requests like Postman
-      if (allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
+
+      // Check if origin matches any allowed pattern
+      const isAllowed = allowedOrigins.some(allowed => {
+        if (typeof allowed === 'string') {
+          return allowed === origin;
+        } else if (allowed instanceof RegExp) {
+          return allowed.test(origin);
+        }
+        return false;
+      });
+
+      if (isAllowed) {
         callback(null, true);
       } else {
-        console.log("Blocked origin:", origin);
+        console.log("❌ Blocked origin:", origin);
+        console.log(" Allowed origins:", allowedOrigins);
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true, // if using cookies/auth headers
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
-
-// app.options("*", cors({
-//   origin: function (origin, callback) {
-//     if (!origin) return callback(null, true);
-//     if (allowedOrigins.includes(origin)) {
 //       callback(null, true);
 //     } else {
 //       console.log("Blocked origin:", origin);
