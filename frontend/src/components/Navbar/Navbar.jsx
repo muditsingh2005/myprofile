@@ -5,7 +5,12 @@ import { motion } from "framer-motion";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
@@ -24,6 +29,7 @@ function Navbar() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setMenuOpen(false); // Close menu on navigation
     }
   };
 
@@ -41,7 +47,11 @@ function Navbar() {
         whileHover={{ rotate: 5 }}
       />
 
-      <ul>
+      <div className="menu-toggle" onClick={toggleMenu}>
+        <div className={`hamburger ${menuOpen ? 'open' : ''}`}></div>
+      </div>
+
+      <ul className={menuOpen ? 'open' : ''}>
         <motion.li 
           onClick={() => scrollToSection("hero")}
           whileHover={{ scale: 1.05 }}

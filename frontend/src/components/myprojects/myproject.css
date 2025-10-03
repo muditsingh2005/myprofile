@@ -17,12 +17,14 @@
 
 .project-card {
   width: 350px;
-  height: 380px;
+  height: auto; /* Changed from fixed height */
   border-radius: 12px;
   overflow: hidden;
   background-color: #1a1a1a;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-link {
@@ -35,10 +37,11 @@
 .project-image-container {
   position: relative;
   overflow: hidden;
-  height: 200px;
+  height: 100%; /* Ensure it fills the card */
+  min-height: 0; /* Allow it to shrink properly */
 }
 
-.project-logo {
+.project-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -83,7 +86,7 @@
 }
 
 .project-content {
-  padding: 20px;
+  /* padding: 20px; */ /* Removed padding */
 }
 
 .project-card-header {
@@ -96,6 +99,62 @@
   color: white;
   margin: 0;
   transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    width: 100%;
+    height: auto; /* Allow height to be determined by content */
+  }
+
+  .project-image-container {
+    height: 100%; /* Make image container fill the card */
+  }
+
+  /* .project-content { */
+  /*   padding: 15px; */
+  /* } */
+
+  .project-card-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .project-description {
+    display: none !important; /* Hide description on mobile */
+  }
+
+  .view-project {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    width: 100%;
+    height: auto; /* Allow height to be determined by content */
+  }
+
+  .project-image-container {
+    height: 100%; /* Make image container fill the card */
+  }
+
+  /* .project-content { */
+  /*   padding: 12px; */
+  /* } */
+
+  .project-card-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .project-description {
+    display: none !important; /* Hide description on mobile */
+  }
+
+  .view-project {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
 }
 
 .project-description {

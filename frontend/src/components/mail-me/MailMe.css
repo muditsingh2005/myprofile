@@ -99,6 +99,65 @@
   box-shadow: 0 0 10px rgba(8, 182, 188, 0.2);
 }
 
+@media (max-width: 768px) {
+  .mail-me-container {
+    padding: 60px 15px;
+  }
+
+  .contact-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-header p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .contact-form {
+    gap: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mail-me-container {
+    padding: 40px 10px;
+  }
+
+  .contact-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-header p {
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    gap: 15px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .submit-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
 .input-highlight {
   position: absolute;
   bottom: 0;

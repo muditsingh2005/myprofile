@@ -90,3 +90,42 @@
   line-height: 1.6;
   font-weight: normal;
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .card-header h2 {
+    font-size: 20px;
+  }
+
+  .card-description {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    margin: 15px auto;
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .icon-circle {
+    margin: 0 auto;
+  }
+
+  .card-header h2 {
+    font-size: 18px;
+  }
+
+  .card-description {
+    font-size: 14px;
+  }
+}

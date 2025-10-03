@@ -93,3 +93,83 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 768px) {
+  .tools-section {
+    margin: 60px auto;
+    padding: 0 15px;
+  }
+
+  .tools-header {
+    margin-bottom: 40px;
+  }
+
+  .tools-header h2 {
+    font-size: 2rem;
+  }
+
+  .tools-header p {
+    font-size: 1rem;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+  }
+
+  .tool-card {
+    max-width: 150px;
+    padding: 20px 15px;
+  }
+
+  .tool-icon-container {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+
+  .tool-icon {
+    max-height: 50px;
+  }
+
+  .tool-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-section {
+    margin: 40px auto;
+  }
+
+  .tools-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .tools-header p {
+    font-size: 0.9rem;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .tool-card {
+    max-width: 120px;
+    padding: 15px 10px;
+  }
+
+  .tool-icon-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tool-icon {
+    max-height: 40px;
+  }
+
+  .tool-name {
+    font-size: 0.8rem;
+  }
+}

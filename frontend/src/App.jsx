@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Experties from "./components/Experties/Experties";
@@ -11,8 +11,31 @@ import { Meteors } from "./components/ui/Meteors";
 import ScrollIndicator from "./components/ui/scrollIndicator";
 import FadeInAnimation from "./components/ui/FadeInAnimation";
 import MailMe from "./components/mail-me/MailMe";
+import ProjectDialog from "./components/ProjectDialog/ProjectDialog";
 
 function App() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [dialogTitle, setDialogTitle] = useState("");
+  const [dialogDescription, setDialogDescription] = useState("");
+  const [dialogImage, setDialogImage] = useState("");
+  const [dialogProjectLink, setDialogProjectLink] = useState("");
+
+  const openDialog = (title, description, image, projectlink) => {
+    setDialogTitle(title);
+    setDialogDescription(description);
+    setDialogImage(image);
+    setDialogProjectLink(projectlink);
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setDialogTitle("");
+    setDialogDescription("");
+    setDialogImage("");
+    setDialogProjectLink("");
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -77,6 +100,7 @@ function App() {
               image={proj2Img}
               description="A blogging page..."
               projectlink="https://github.com/muditsingh2005/blog-page"
+              openDialog={openDialog}
             />
           </FadeInAnimation>
           <FadeInAnimation delay={0.2}>
@@ -85,6 +109,7 @@ function App() {
               image={proj1Img}
               description="A travel review site"
               projectlink="https://github.com/muditsingh2005/triview"
+              openDialog={openDialog}
             />
           </FadeInAnimation>
         </div>
@@ -98,6 +123,14 @@ function App() {
       </div>
 
       <Meteors number={8} />
+      <ProjectDialog
+        isOpen={isDialogOpen}
+        title={dialogTitle}
+        description={dialogDescription}
+        image={dialogImage}
+        projectlink={dialogProjectLink}
+        onClose={closeDialog}
+      />
     </>
   );
 }

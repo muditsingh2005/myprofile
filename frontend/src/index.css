@@ -55,6 +55,26 @@ a {
   font-size: 40px;
 }
 
+@media (max-width: 768px) {
+  .exp-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .exp-heading {
+    padding-left: 0;
+    text-align: center;
+    font-size: 32px;
+    padding-top: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-heading {
+    font-size: 28px;
+  }
+}
+
 .my-experties {
   /* background:  linear-gradient(rgba(27, 27, 27, 0.6), rgba(27, 27, 27, 0.6)) ,  url(../src/assets/exp-bg1.jpg); */
   width: 100%;
@@ -72,7 +92,7 @@ a {
 .my-work-project-section {
   display: grid;
   column-gap: 50px;
-  row-gap: 40px;
+  row-gap: 20px; /* Reduced from 40px */
   grid-template-columns: repeat(auto-fit, 350px);
   justify-content: center;
   width: 100%;
@@ -80,9 +100,36 @@ a {
   margin: 30px auto;
 }
 
+@media (max-width: 768px) {
+  .my-work-project-section {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    column-gap: 20px;
+    row-gap: 15px; /* Reduced from 20px */
+    margin: 20px auto;
+  }
+
+  .mywork-heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-work-project-section {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    column-gap: 15px;
+    row-gap: 15px;
+    margin: 15px auto;
+  }
+
+  .mywork-heading {
+    font-size: 28px;
+  }
+}
+
 .work-section {
   width: 100%;
-  height: 750px;
+  /* height: 750px; */ /* Removed fixed height */
+  margin-bottom: 50px; /* Added space below My Work section */
 }
 .fotter-div {
   width: 100%;
