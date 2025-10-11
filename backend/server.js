@@ -8,9 +8,7 @@ dotenv.config({
 const app = express();
 
 const allowedOrigins = [
-  "https://myprofile-na37.vercel.app/",
-  process.env.FRONTEND_URL_PROD || "https://myprofile-na37.vercel.app/",
-  process.env.FRONTEND_URL_DEV || "http://localhost:5173",
+  "https://myprofile-na37.vercel.app",
   "https://myprofile-three-tawny.vercel.app",
   "http://localhost:3000",
   "http://localhost:5173",
