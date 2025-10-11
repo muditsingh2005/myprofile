@@ -8,29 +8,22 @@ dotenv.config({
 const app = express();
 
 const allowedOrigins = [
-  // Add your exact deployed frontend URL
-  "https://myprofile-na37.vercel.app",
-  // Keep production URL for safety
-  process.env.FRONTEND_URL_PROD || "https://myprofile-na37.vercel.app",
-  // Development URLs
+  "https://myprofile-na37.vercel.app/",
+  process.env.FRONTEND_URL_PROD || "https://myprofile-na37.vercel.app/",
   process.env.FRONTEND_URL_DEV || "http://localhost:5173",
-  // Backup URLs
   "https://myprofile-three-tawny.vercel.app",
   "http://localhost:3000",
   "http://localhost:5173",
-  // Vercel preview deployments (if using)
   /^https:\/\/.*\.vercel\.app$/,
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (mobile apps, curl, etc.)
       if (!origin) return callback(null, true);
 
-      // Check if origin matches any allowed pattern
-      const isAllowed = allowedOrigins.some(allowed => {
-        if (typeof allowed === 'string') {
+      const isAllowed = allowedOrigins.some((allowed) => {
+        if (typeof allowed === "string") {
           return allowed === origin;
         } else if (allowed instanceof RegExp) {
           return allowed.test(origin);
@@ -51,27 +44,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
-//       callback(null, true);
-//     } else {
-//       console.log("Blocked origin:", origin);
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true,
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-// }));
-
-// app.options("*", cors({
-//   origin: allowedOrigins,
-//   credentials: true,
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-// }));
 
 app.use(express.json());
 
-// Route for contact form
 app.post("/send", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -101,11 +76,6 @@ app.post("/send", async (req, res) => {
     res.status(500).json({ success: false, message: "Error sending email" });
   }
 });
-
-
-
-// app.listen(5000, () => console.log("✅ Server running on port 5000"));
-
 
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 5000;
