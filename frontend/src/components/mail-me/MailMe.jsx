@@ -27,9 +27,9 @@ const MailMe = () => {
 
     try {
       // Use local backend for development, deployed backend for production
-      const API_URL = process.env.NODE_ENV === 'production'
-        ? 'https://myprofile-three-tawny.vercel.app/send'
-        : 'http://localhost:5000/send';
+      const API_URL = import.meta.env.PROD
+        ? "https://myprofile-three-tawny.vercel.app/send"
+        : "http://localhost:5000/send";
 
       const response = await fetch(API_URL, {
         method: "POST",
